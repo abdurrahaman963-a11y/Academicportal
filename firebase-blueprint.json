@@ -1,0 +1,137 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User role and authentication mapping",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "username": { "type": "string" },
+        "role": { "type": "string", "enum": ["SUPER_ADMIN", "SCHOOL_ADMIN", "TEACHER", "STUDENT", "PARENT"] },
+        "schoolId": { "type": "string" },
+        "name": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "username", "role"]
+    },
+    "School": {
+      "title": "School",
+      "description": "Registered SaaS School Tenant",
+      "type": "object",
+      "properties": {
+        "schoolId": { "type": "string" },
+        "name": { "type": "string" },
+        "nameBengali": { "type": "string" },
+        "code": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "status": { "type": "string" },
+        "saasStatus": { "type": "string" },
+        "adminId": { "type": "string" },
+        "adminKey": { "type": "string" },
+        "versionKey": { "type": "string" },
+        "totalStudents": { "type": "number" },
+        "totalTeachers": { "type": "number" },
+        "currentAcademicYear": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["schoolId", "name"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "School Student Record",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "class": { "type": "string" },
+        "roll": { "type": "number" },
+        "name": { "type": "string" },
+        "fatherName": { "type": "string" },
+        "govtSchoolName": { "type": "string" },
+        "gender": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "monthlyFee": { "type": "number" },
+        "status": { "type": "string" },
+        "vehicle": { "type": "string" },
+        "totalCollection": { "type": "number" },
+        "lastReceiptNo": { "type": "string" }
+      },
+      "required": ["class", "roll", "name"]
+    },
+    "ExamMark": {
+      "title": "Exam Mark",
+      "description": "Student Exam Performance Record",
+      "type": "object",
+      "properties": {
+        "class": { "type": "string" },
+        "roll": { "type": "number" },
+        "studentName": { "type": "string" },
+        "examName": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "markObtain": { "type": "number" },
+        "totalMark": { "type": "number" },
+        "grade": { "type": "string" }
+      },
+      "required": ["class", "roll", "examName", "subjectName", "markObtain"]
+    },
+    "FeeReceipt": {
+      "title": "Fee Receipt",
+      "description": "Student Fee Payment Receipt",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "receiptNo": { "type": "string" },
+        "date": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentClass": { "type": "string" },
+        "roll": { "type": "number" },
+        "amount": { "type": "number" },
+        "paymentMode": { "type": "string" }
+      },
+      "required": ["id", "receiptNo", "studentName", "amount"]
+    },
+    "DaybookEntry": {
+      "title": "Daybook Entry",
+      "description": "Financial Transaction Log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "type": { "type": "string", "enum": ["INCOME", "EXPENSE"] },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "description": { "type": "string" },
+        "paymentMethod": { "type": "string" }
+      },
+      "required": ["id", "date", "type", "amount"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User authentication profile and role isolation"
+    },
+    "/schools/{schoolId}": {
+      "schema": "School",
+      "description": "SaaS Tenant School configuration"
+    },
+    "/schools/{schoolId}/students/{studentId}": {
+      "schema": "Student",
+      "description": "Student roster documents for a specific school"
+    },
+    "/schools/{schoolId}/marks/{markId}": {
+      "schema": "ExamMark",
+      "description": "Exam mark entries for a specific school"
+    },
+    "/schools/{schoolId}/feeReceipts/{receiptId}": {
+      "schema": "FeeReceipt",
+      "description": "Fee payment receipts for a specific school"
+    },
+    "/schools/{schoolId}/daybook/{daybookId}": {
+      "schema": "DaybookEntry",
+      "description": "Financial daybook logs for a specific school"
+    }
+  }
+}

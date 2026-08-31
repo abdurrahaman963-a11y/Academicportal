@@ -1,0 +1,12 @@
+{
+  "projectId": "prochesta-fee",
+  "appId": "1:95230055551:web:b0c3108a640cc33a8c1b4a",
+  "apiKey": "AIzaSyCQQxaLaGCyMh9imVY7X9_hpQcql4vM_D4",
+  "authDomain": "prochesta-fee.firebaseapp.com",
+  "storageBucket": "prochesta-fee.firebasestorage.app",
+  "messagingSenderId": "95230055551",
+  "databaseURL": "https://prochesta-fee-default-rtdb.firebaseio.com",
+  "measurementId": "",
+  "oAuthClientId": "",
+  "recaptchaSiteKey": ""
+}

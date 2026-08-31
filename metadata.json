@@ -1,0 +1,8 @@
+{
+  "name": "School Hub",
+  "description": "মাল্টি-টেন্যান্ট স্কুল ম্যানেজমেন্ট সাশ পোর্টাল (School Hub) - ক্লাউড ফায়ারস্টোর ডেটাবেস সহ।",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
