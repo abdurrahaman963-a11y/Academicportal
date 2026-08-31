@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+}
+
+@page {
+  size: auto;
+  margin: 3mm;
+}
+
+@media print {
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body, #root, #root > div, main {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  /* Completely clear out backgrounds and dark borders from non-printable elements */
+  *:not(.printable-area):not(.printable-area *):not(.printable-a5-collection):not(.printable-a5-collection *) {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  header, aside, nav, .no-print, .no-print * {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .printable-area, .printable-a5-collection {
+    display: block !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    z-index: 9999 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .printable-area > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .marksheet-page-fit {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+    max-height: 100vh !important;
+  }
+
+  .marksheet-page-fit:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .page-break {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  .avoid-break-inside, tr, .print-row {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .idcard-sheet-container {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    max-height: 100vh !important;
+  }
+  .idcard-sheet-container:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+  .idcard-a4-grid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .print-auto-overflow {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+  .print-clamp-text {
+    font-size: clamp(10px, 1.5vw, 13px) !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+}
